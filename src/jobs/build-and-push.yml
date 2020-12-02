@@ -1,0 +1,40 @@
+description: >
+  build and push image to two repositories
+
+parameters:
+  tag:
+    type: string
+
+  repo:
+    type: string
+
+  account-url:
+    type: string
+
+  aws-access-key-id:
+    type: string
+
+  aws-secret-access-key:
+    type: string
+
+  account-url-2:
+    type: string
+
+  aws-access-key-id-2:
+    type: string
+
+  aws-secret-access-key-2:
+    type: string
+
+executor: aws-ecr/default
+
+steps:
+  - build-push-image:
+      tag: <<parameters.tag>>
+      repo: <<parameters.repo>>
+      account-url: <<parameters.account-url>>
+      aws-access-key-id: <<parameters.aws-access-key-id>>
+      aws-secret-access-key: <<parameters.aws-secret-access-key>>
+      account-url-2: <<parameters.account-url-2>>
+      aws-access-key-id-2: <<parameters.aws-access-key-id-2>>
+      aws-secret-access-key-2: <<parameters.aws-secret-access-key-2>>

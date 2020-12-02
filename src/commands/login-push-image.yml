@@ -1,0 +1,25 @@
+description: >
+  login to ecr and push the image
+
+parameters:
+  tag:
+    type: string
+  repo:
+    type: string
+  aws-access-key-id:
+    type: string
+  aws-secret-access-key:
+    type: string
+  account-url:
+    type: string
+
+steps:
+  - aws-ecr/ecr-login:
+      aws-access-key-id: <<parameters.aws-access-key-id>>
+      aws-secret-access-key: <<parameters.aws-secret-access-key>>
+      account-url: <<parameters.account-url>>
+
+  - aws-ecr/push-image:
+      account-url: <<parameters.account-url>>
+      tag: <<parameters.tag>>
+      repo: <<parameters.repo>>
