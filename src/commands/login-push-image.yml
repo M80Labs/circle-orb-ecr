@@ -4,6 +4,7 @@ description: >
 parameters:
   tag:
     type: string
+    default: "${CIRCLE_SHA1}"
   repo:
     type: string
   aws-access-key-id:
