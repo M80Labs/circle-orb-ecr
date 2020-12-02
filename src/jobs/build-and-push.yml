@@ -29,7 +29,7 @@ parameters:
 executor: aws-ecr/default
 
 steps:
-  - build-push-image:
+  - build-and-push-image:
       tag: <<parameters.tag>>
       repo: <<parameters.repo>>
       account-url: <<parameters.account-url>>
