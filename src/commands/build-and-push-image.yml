@@ -47,7 +47,7 @@ steps:
       command: |
         IFS="," read -ra DOCKER_TAGS \<<< "<< parameters.tag >>"
         for tag in "${DOCKER_TAGS[@]}"; do
-          docker tag <<parameters.account-url>>/<<parameters.repo>>:${tag} <<parameters.account-url-2>>/<<parameters.repo>>:${tag}
+          docker tag ${<<parameters.account-url>>}/<<parameters.repo>>:${tag} ${<<parameters.account-url-2>>}/<<parameters.repo>>:${tag}
         done
 
   - login-push-image:
