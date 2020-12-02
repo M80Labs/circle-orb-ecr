@@ -1,5 +1,6 @@
-description:>
+description: >
   build and push image to two repositories
+
 parameters:
   tag:
     type: string
