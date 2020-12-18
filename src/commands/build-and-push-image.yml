@@ -28,6 +28,10 @@ parameters:
     type: string
 
 steps:
+  - run:
+      name: Generate build-info file
+      command: <<include(scripts/buildinfo.sh)>>
+
   # Dev
   - aws-ecr/build-image:
       checkout: true
