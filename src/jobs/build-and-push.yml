@@ -30,6 +30,8 @@ parameters:
 executor: aws-ecr/default
 
 steps:
+  - generate-build-info
+
   - build-and-push-image:
       tag: <<parameters.tag>>
       repo: <<parameters.repo>>

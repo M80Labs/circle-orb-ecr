@@ -1,0 +1,7 @@
+description: >
+  generate build info file
+
+steps:
+  - run:
+      name: Generate build-info file
+      command: <<include(scripts/buildinfo.sh)>>
