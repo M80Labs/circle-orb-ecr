@@ -28,9 +28,9 @@ parameters:
     type: string
 
 steps:
+
   # Dev
   - aws-ecr/build-image:
-      checkout: true
       repo: <<parameters.repo>>
       tag: <<parameters.tag>>
       account-url: <<parameters.account-url>>
