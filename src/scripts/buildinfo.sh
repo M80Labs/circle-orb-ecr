@@ -11,9 +11,10 @@ Generate() {
         \"commit\": \"${CIRCLE_SHA1}\",
         \"build_number\": \"${CIRCLE_BUILD_NUM}\"
     }" > ${BUILD_INFO_FILE}
-
+    echo
     cat ${BUILD_INFO_FILE}
-
+    echo
+    echo
     echo "Done creating build_info file"
 
 }
