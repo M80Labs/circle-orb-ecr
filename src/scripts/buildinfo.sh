@@ -1,4 +1,7 @@
 Generate() {
+
+    env
+
     echo "Creating build_info file"
     BUILD_INFO_FILE=${BUILD_INFO_FILE:-build_info.json}
 
