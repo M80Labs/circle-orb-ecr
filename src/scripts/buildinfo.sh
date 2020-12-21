@@ -1,7 +1,5 @@
 Generate() {
 
-    env
-
     echo "Creating build_info file"
     BUILD_INFO_FILE=${BUILD_INFO_FILE:-build_info.json}
 
@@ -14,7 +12,10 @@ Generate() {
         \"build_number\": \"${CIRCLE_BUILD_NUM}\"
     }" > ${BUILD_INFO_FILE}
 
+    cat ${BUILD_INFO_FILE}
+
     echo "Done creating build_info file"
+
 }
 
 # Will not run if sourced for bats-core tests.
