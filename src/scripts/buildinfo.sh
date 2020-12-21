@@ -9,9 +9,9 @@ Generate() {
 
     printf "{
         \"date\": \"${NOW}\",
-        \"branch\": \"${BRANCH}\",
-        \"commit\": \"${COMMIT_SHA1}\",
-        \"build_number\": \"${BUILD_NUMBER}\"
+        \"branch\": \"${CIRCLE_BRANCH}\",
+        \"commit\": \"${CIRCLE_SHA1}\",
+        \"build_number\": \"${CIRCLE_BUILD_NUM}\"
     }" > ${BUILD_INFO_FILE}
 
     echo "Done creating build_info file"
