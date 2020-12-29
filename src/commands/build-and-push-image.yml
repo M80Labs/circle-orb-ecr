@@ -28,8 +28,8 @@ parameters:
     type: string
 
   extra-build-args:
-      type: string
-      default: ""
+    type: string
+    default: ""
 
 steps:
 
