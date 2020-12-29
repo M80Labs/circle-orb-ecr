@@ -7,6 +7,6 @@ description: >
 
 # If your orb requires other orbs, you can import them like this. Otherwise remove the "orbs" stanza.
 orbs:
-  aws-ecr: circleci/aws-ecr@6.15.0
+  aws-ecr: circleci/aws-ecr@6.15.2
   codeartifact: crayon/circle-orb-codeartifact@1.1.1
   aws-cli: circleci/aws-cli@1.3.1
