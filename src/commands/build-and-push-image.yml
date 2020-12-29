@@ -27,6 +27,10 @@ parameters:
   aws-secret-access-key-2:
     type: string
 
+  extra-build-args:
+      type: string
+      default: ""
+
 steps:
 
   # Dev
@@ -34,6 +38,7 @@ steps:
       repo: <<parameters.repo>>
       tag: <<parameters.tag>>
       account-url: <<parameters.account-url>>
+      extra-build-args: <<parameter.extra-build-args>>
 
   - login-push-image:
       aws-access-key-id: <<parameters.aws-access-key-id>>

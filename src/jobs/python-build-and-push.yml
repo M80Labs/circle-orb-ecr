@@ -1,0 +1,65 @@
+description: >
+  build and push image to two repositories
+
+parameters:
+  tag:
+    type: string
+    default: "${CIRCLE_SHA1}"
+
+  repo:
+    type: string
+
+  account-url:
+    type: string
+
+  aws-access-key-id:
+    type: string
+
+  aws-secret-access-key:
+    type: string
+
+  account-url-2:
+    type: string
+
+  aws-access-key-id-2:
+    type: string
+
+  aws-secret-access-key-2:
+    type: string
+
+  repository:
+    type: string
+    description: "CodeArtifact repository name"
+
+  domain:
+    type: string
+    description: "CodeArtifact domain name"
+
+  domain-owner:
+    type: string
+    description: "CodeArtifact domain owner"
+
+executor: aws-ecr/default
+
+steps:
+  - checkout
+
+  - generate-build-info
+
+  - aws-cli/install
+
+  - codeartifact/python-export-index-url:
+      repository: <<parameters.repository>>
+      domain: <<parameters.domain>>
+      domain-owner: <<parameters.domain-owner>>
+
+  - build-and-push-image:
+      tag: <<parameters.tag>>
+      repo: <<parameters.repo>>
+      account-url: <<parameters.account-url>>
+      aws-access-key-id: <<parameters.aws-access-key-id>>
+      aws-secret-access-key: <<parameters.aws-secret-access-key>>
+      account-url-2: <<parameters.account-url-2>>
+      aws-access-key-id-2: <<parameters.aws-access-key-id-2>>
+      aws-secret-access-key-2: <<parameters.aws-secret-access-key-2>>
+      extra-build-args: "--build-arg PIP_INDEX_URL=${PIP_INDEX_URL}"
