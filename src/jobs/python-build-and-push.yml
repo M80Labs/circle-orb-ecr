@@ -47,4 +47,4 @@ steps:
       account-url-2: <<parameters.account-url-2>>
       aws-access-key-id-2: <<parameters.aws-access-key-id-2>>
       aws-secret-access-key-2: <<parameters.aws-secret-access-key-2>>
-      extra-build-args: "--build-arg PIP_INDEX_URL=${PIP_INDEX_URL}"
+      extra-build-args: "--secret id=pip_index_url,src=/tmp/pip_index_url"
