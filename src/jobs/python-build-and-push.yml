@@ -39,6 +39,10 @@ parameters:
     type: string
     description: "CodeArtifact domain owner"
 
+  region:
+    type: string
+    description: "CodeArtifact aws region"
+
 executor: aws-ecr/default
 
 steps:
@@ -52,6 +56,7 @@ steps:
       repository: <<parameters.repository>>
       domain: <<parameters.domain>>
       domain-owner: <<parameters.domain-owner>>
+      region: <<parameters.region>>
 
   - build-and-push-image:
       tag: <<parameters.tag>>
