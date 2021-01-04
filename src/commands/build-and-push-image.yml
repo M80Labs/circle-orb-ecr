@@ -38,7 +38,7 @@ steps:
       repo: <<parameters.repo>>
       tag: <<parameters.tag>>
       account-url: <<parameters.account-url>>
-      extra-build-args: <<parameter.extra-build-args>>
+      extra-build-args: <<parameters.extra-build-args>>
 
   - login-push-image:
       aws-access-key-id: <<parameters.aws-access-key-id>>
