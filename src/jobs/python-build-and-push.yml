@@ -27,22 +27,6 @@ parameters:
   aws-secret-access-key-2:
     type: string
 
-  repository:
-    type: string
-    description: "CodeArtifact repository name"
-
-  domain:
-    type: string
-    description: "CodeArtifact domain name"
-
-  domain-owner:
-    type: string
-    description: "CodeArtifact domain owner"
-
-  region:
-    type: string
-    description: "CodeArtifact aws region"
-
 executor: aws-ecr/default
 
 steps:
@@ -52,11 +36,7 @@ steps:
 
   - aws-cli/install
 
-  - codeartifact/python-export-index-url:
-      repository: <<parameters.repository>>
-      domain: <<parameters.domain>>
-      domain-owner: <<parameters.domain-owner>>
-      region: <<parameters.region>>
+  - codeartifact/python-export-index-url
 
   - build-and-push-image:
       tag: <<parameters.tag>>
