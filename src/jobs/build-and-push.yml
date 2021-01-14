@@ -20,15 +20,16 @@ parameters:
 
   account-url-2:
     type: string
-    default: ""
 
   aws-access-key-id-2:
     type: string
-    default: ""
 
   aws-secret-access-key-2:
     type: string
-    default: ""
+
+  enable-push-2:
+    type: boolean
+    default: true
 
 executor: aws-ecr/default
 
@@ -46,3 +47,4 @@ steps:
       account-url-2: <<parameters.account-url-2>>
       aws-access-key-id-2: <<parameters.aws-access-key-id-2>>
       aws-secret-access-key-2: <<parameters.aws-secret-access-key-2>>
+      enable-push-2: <<parameters.enable-push-2>>

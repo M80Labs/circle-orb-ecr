@@ -30,6 +30,10 @@ parameters:
     type: string
     default: ""
 
+  enable-push-2:
+    type: boolean
+    default: true
+
 executor: aws-ecr/default
 
 steps:

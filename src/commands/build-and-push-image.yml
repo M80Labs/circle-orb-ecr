@@ -30,6 +30,10 @@ parameters:
     type: string
     default: ""
 
+  enable-push-2:
+    type: boolean
+    default: true
+
   extra-build-args:
     type: string
     default: ""
@@ -50,11 +54,7 @@ steps:
       repo: <<parameters.repo>>
 
   - when:
-      condition:
-        and:
-          - <<parameters.aws-access-key-id-2>>
-          - <<parameters.aws-secret-access-key-2>>
-          - <<parameters.account-url-2>>
+      condition: <<parameters.enable-push-2>>
 
       steps:
         - run:
