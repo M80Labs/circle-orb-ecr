@@ -20,12 +20,15 @@ parameters:
 
   account-url-2:
     type: string
+    default: ""
 
   aws-access-key-id-2:
     type: string
+    default: ""
 
   aws-secret-access-key-2:
     type: string
+    default: ""
 
   extra-build-args:
     type: string
