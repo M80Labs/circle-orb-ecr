@@ -33,7 +33,6 @@ parameters:
 
 steps:
 
-  # Dev
   - aws-ecr/build-image:
       repo: <<parameters.repo>>
       tag: <<parameters.tag>>
@@ -47,18 +46,25 @@ steps:
       tag: <<parameters.tag>>
       repo: <<parameters.repo>>
 
-  # Production
-  - run:
-      name: retag image for alternate remote repository
-      command: |
-        IFS="," read -ra DOCKER_TAGS \<<< "<< parameters.tag >>"
-        for tag in "${DOCKER_TAGS[@]}"; do
-          docker tag ${<<parameters.account-url>>}/<<parameters.repo>>:${tag} ${<<parameters.account-url-2>>}/<<parameters.repo>>:${tag}
-        done
+  - when:
+      condition:
+        and:
+          - <<parameters.aws-access-key-id-2>>
+          - <<parameters.aws-secret-access-key-2>>
+          - <<parameters.account-url-2>>
 
-  - login-push-image:
-      aws-access-key-id: <<parameters.aws-access-key-id-2>>
-      aws-secret-access-key: <<parameters.aws-secret-access-key-2>>
-      account-url: <<parameters.account-url-2>>
-      tag: <<parameters.tag>>
-      repo: <<parameters.repo>>
+      steps:
+        - run:
+            name: retag image for alternate remote repository
+            command: |
+              IFS="," read -ra DOCKER_TAGS \<<< "<< parameters.tag >>"
+              for tag in "${DOCKER_TAGS[@]}"; do
+                docker tag ${<<parameters.account-url>>}/<<parameters.repo>>:${tag} ${<<parameters.account-url-2>>}/<<parameters.repo>>:${tag}
+              done
+
+        - login-push-image:
+            aws-access-key-id: <<parameters.aws-access-key-id-2>>
+            aws-secret-access-key: <<parameters.aws-secret-access-key-2>>
+            account-url: <<parameters.account-url-2>>
+            tag: <<parameters.tag>>
+            repo: <<parameters.repo>>
